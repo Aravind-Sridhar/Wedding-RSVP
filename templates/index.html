@@ -3,30 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding RSVP</title>
+    <title>RSVP for Aravind Sridhar and Sametha Jeyaraman's Wedding</title>
+    <style>
+        /* Your existing styles here */
+
+        .wedding-details {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+    </style>
 </head>
 <body>
-<h1>Wedding RSVP</h1>
+<div class="container">
+    <h1>RSVP for Aravind Sridhar and Sametha Jeyaraman's Wedding</h1>
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-<ul class="flashes">
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-{% endwith %}
+    <!-- Flash messages section -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flashes">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
 
-<form method="POST" action="/">
-    {{ form.hidden_tag() }}
-    <label for="{{ form.name.id }}">Name:</label>
-    {{ form.name() }}
-    <br>
-    <label for="{{ form.attendance.id }}">Will you attend?</label>
-    {{ form.attendance() }}
-    <br>
-    <button type="submit">Submit RSVP</button>
-</form>
+    <!-- RSVP form -->
+    <form method="POST" action="/">
+        {{ form.hidden_tag() }}
+        <label for="{{ form.name.id }}">Name:</label>
+        {{ form.name() }}
+        <br>
+        <label for="{{ form.attendance.id }}">Will you attend?</label>
+        {{ form.attendance() }}
+        <br>
+        <button type="submit">Submit RSVP</button>
+    </form>
+
+    <!-- Wedding details section -->
+    <div class="wedding-details">
+        <h2>Wedding Details</h2>
+        <p>Aravind Sridhar and Sametha Jeyaraman</p>
+        <p>Date: [09/06/2024]</p>
+        <p>Location: [Adambakkam, Chennai, TN]</p>
+    </div>
+</div>
 </body>
 </html>
