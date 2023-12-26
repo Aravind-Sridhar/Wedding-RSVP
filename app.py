@@ -3,6 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, RadioField
 import qrcode
 from io import BytesIO
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key_for_form_security'
@@ -80,4 +81,7 @@ def generate_qr():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+
+    # Use the host and port provided by PythonAnywhere
+    port = int(os.environ.get('PORT', 0000))
+    app.run(host='0.0.0.0', port=port)
